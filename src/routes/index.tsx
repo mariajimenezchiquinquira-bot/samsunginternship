@@ -21,13 +21,13 @@ import sheetsResult from "@/assets/projects/n8n-sheets.png";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "María José Jiménez — Portafolio" },
+      { title: "María José Jiménez — Samsung Internship" },
       {
         name: "description",
         content:
           "Portafolio de María José Jiménez, estudiante de Ingeniería Industrial especializada en producto digital, business intelligence y análisis de datos, con proyectos potenciados con IA para fintech.",
       },
-      { property: "og:title", content: "María José Jiménez — Portafolio" },
+      { property: "og:title", content: "María José Jiménez — Samsung Internship" },
       {
         property: "og:description",
         content:

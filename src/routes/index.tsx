@@ -1,7 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { FileText, Linkedin } from "lucide-react";
+import { Linkedin } from "lucide-react";
 import {
-  ActionLink,
   CardBlock,
   DocsLink,
   GithubLink,
@@ -15,12 +14,9 @@ import payraSplitNotionTimelineBacklog from "@/assets/projects/payrasplit-notion
 import payraSplitTableau from "@/assets/projects/payrasplit-tableau-dashboard.png";
 import weworkDashboardOverview from "@/assets/projects/wework-dashboard-overview.png";
 import churnDashboard from "@/assets/projects/churn-capital-loss-dashboard-v2.png";
-import segElbowMethod from "@/assets/projects/segmentation-5-elbow-method.png";
-import segDominantCategory from "@/assets/projects/segmentation-4-dominant-category.png";
-import segAvgTransaction from "@/assets/projects/segmentation-6-avg-transaction-by-cluster.png";
-import segCardFranchise from "@/assets/projects/segmentation-card-franchise.png";
-import segDomesticIntl from "@/assets/projects/segmentation-2-domestic-vs-international.png";
-import segWeekdayHeatmap from "@/assets/projects/segmentation-weekday-heatmap.png";
+import n8nFlow from "@/assets/projects/n8n-flow-diagram.png";
+import n8nConfirmationMsg from "@/assets/projects/n8n-confirmation-message.png";
+import sheetsResult from "@/assets/projects/n8n-sheets.png";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -51,6 +47,10 @@ const SKILLS = [
   "Tableau",
   "Excel",
   "R",
+  "n8n",
+  "Automatización",
+  "IA Generativa",
+  "Mejora de Procesos",
   "Metodologías Ágiles (Scrum, Kanban)",
   "Gestión de Producto",
   "Business Intelligence",
@@ -103,86 +103,32 @@ function Index() {
           </h2>
           <div className="mt-8 grid gap-6">
             <ProjectCard
-              title="Segmentación — Tarjetahabientes por Comportamiento de Gasto"
-              tech={["Python", "SQL", "Scikit-learn", "K-means"]}
+              title="Análisis — Fuga de Clientes y Pérdida de Capital"
+              tech={["Power BI", "DAX", "Visualización de Datos"]}
               actions={
-                <ActionLink href="/ConsumoTarjetasCredito.html" variant="solid">
-                  <FileText className="h-4 w-4" aria-hidden="true" />
-                  Notebook
-                </ActionLink>
+                <GithubLink href="https://github.com/mariajimenezchiquinquira-bot/PowerBi-Customer-Churn-Capital-Loss-Analysis" />
               }
             >
               <CardBlock label="Problema">
-                Un banco contaba con información de gasto de más de 47.000 tarjetahabientes,
-                pero no tenía una forma clara de agruparlos según como usaban sus tarjetas, lo
-                que dificultaba crear promociones dirigidas.
+                Un banco enfrentaba una alta fuga de clientes sin identificar sus principales
+                causas ni el impacto financiero asociado.
               </CardBlock>
               <CardBlock label="Enfoque">
-                Se utilizó K-means para agrupar a los clientes según su comportamiento
-                transaccional y, mediante el método del codo, se definió el número de
-                segmentos. Luego, mediante consultas en SQL, se analizó la frecuencia de uso,
-                el gasto promedio y la categoría de mayor consumo de cada grupo.
+                Se realizó un análisis exploratorio en Power BI para identificar patrones de
+                fuga, comparar segmentos y detectar los clientes con mayor riesgo de abandono.
               </CardBlock>
-              <CardBlock label="Resultado">
-                Se identificaron tres segmentos, ocasionales de bajo gasto (42.7%), ocasionales
-                de alto valor (33.1%) y usuarios frecuentes (24.2%). A partir de estos perfiles,
-                se definieron acciones para incentivar el uso de los clientes de bajo gasto,
-                fortalecer la retención de los de alto valor y aumentar la lealtad de los
-                usuarios frecuentes.
+              <CardBlock label="Resultados">
+                Se encontró que la pérdida de capital estaba concentrada en clientes con altos
+                saldos, generando un impacto financiero significativo. La inactividad surgió
+                como la principal señal de alerta, especialmente en Alemania, donde se registró
+                la mayor tasa de fuga.
               </CardBlock>
-              <ProjectImageGrid
-                columns={3}
-                images={[
-                  { src: segElbowMethod, alt: "Método del codo para seleccionar el número de clústeres" },
-                  { src: segDominantCategory, alt: "Categoría de gasto dominante por clúster" },
-                  { src: segAvgTransaction, alt: "Monto promedio de transacción por clúster de clientes" },
-                  { src: segCardFranchise, alt: "Franquicia de tarjeta más usada por clúster" },
-                  { src: segDomesticIntl, alt: "Gasto nacional vs. internacional por clúster" },
-                  { src: segWeekdayHeatmap, alt: "Gasto por día de la semana y clúster" },
-                ]}
+              <img
+                src={churnDashboard}
+                alt="Dashboard de Power BI: Análisis de Fuga de Clientes y Pérdida de Capital"
+                loading="lazy"
+                className="mx-auto w-full max-w-3xl rounded-md bg-white object-contain"
               />
-            </ProjectCard>
-
-            <ProjectCard
-              title="WeWork — Business Case"
-              tech={["Business Intelligence", "Business Strategy", "Financial Analysis"]}
-              actions={
-                <DocsLink href="/docs/WeWork_Case_Study_Analysis.html" label="Ver Análisis Completo" />
-              }
-            >
-              <CardBlock label="Problema">
-                WeWork alcanzó una valoración de USD 47.000M en 2019, pero terminó
-                declarándose en bancarrota en 2023. El reto fue utilizar información
-                financiera y operativa para entender qué había detrás de ese crecimiento y qué
-                señales indicaban riesgos para la sostenibilidad del negocio.
-              </CardBlock>
-              <CardBlock label="Análisis">
-                Analicé la evolución de ingresos, pérdidas, costos, pasivos, patrimonio y
-                compromisos financieros, conectando estos indicadores con el modelo de negocio y
-                la estrategia de expansión. El objetivo fue entender no solo qué estaba
-                ocurriendo, sino qué características del modelo y qué decisiones estaban
-                generando esos resultados.
-              </CardBlock>
-              <CardBlock label="Insight">
-                El crecimiento de WeWork estuvo acompañado de pérdidas significativas, mayores
-                obligaciones financieras y compromisos de largo plazo, evidenciando una brecha
-                entre el crecimiento del negocio y su capacidad para sostenerlo financieramente.
-                El análisis permitió identificar cómo los datos financieros podían revelar
-                riesgos estratégicos y de sostenibilidad del negocio.
-              </CardBlock>
-              <a
-                href={weworkDashboardOverview}
-                target="_blank"
-                rel="noreferrer"
-                className="group flex items-center justify-center overflow-hidden rounded-md"
-              >
-                <img
-                  src={weworkDashboardOverview}
-                  alt="Dashboard de indicadores clave de WeWork: valoración, pasivos vs. patrimonio, ingresos vs. pérdida neta y crecimiento operativo"
-                  loading="lazy"
-                  className="mx-auto w-full max-w-3xl rounded-md bg-white object-contain transition-transform duration-300 group-hover:scale-[1.02]"
-                />
-              </a>
             </ProjectCard>
 
             <ProjectCard
@@ -250,32 +196,114 @@ function Index() {
             </ProjectCard>
 
             <ProjectCard
-              title="Análisis — Fuga de Clientes y Pérdida de Capital"
-              tech={["Power BI", "DAX", "Visualización de Datos"]}
+              title="WeWork — Business Case"
+              tech={["Business Intelligence", "Business Strategy", "Financial Analysis"]}
               actions={
-                <GithubLink href="https://github.com/mariajimenezchiquinquira-bot/PowerBi-Customer-Churn-Capital-Loss-Analysis" />
+                <DocsLink href="/docs/WeWork_Case_Study_Analysis.html" label="Ver Análisis Completo" />
               }
             >
               <CardBlock label="Problema">
-                Un banco enfrentaba una alta fuga de clientes sin identificar sus principales
-                causas ni el impacto financiero asociado.
+                WeWork alcanzó una valoración de USD 47.000M en 2019, pero terminó
+                declarándose en bancarrota en 2023. El reto fue utilizar información
+                financiera y operativa para entender qué había detrás de ese crecimiento y qué
+                señales indicaban riesgos para la sostenibilidad del negocio.
               </CardBlock>
-              <CardBlock label="Enfoque">
-                Se realizó un análisis exploratorio en Power BI para identificar patrones de
-                fuga, comparar segmentos y detectar los clientes con mayor riesgo de abandono.
+              <CardBlock label="Análisis">
+                Analicé la evolución de ingresos, pérdidas, costos, pasivos, patrimonio y
+                compromisos financieros, conectando estos indicadores con el modelo de negocio y
+                la estrategia de expansión. El objetivo fue entender no solo qué estaba
+                ocurriendo, sino qué características del modelo y qué decisiones estaban
+                generando esos resultados.
               </CardBlock>
-              <CardBlock label="Resultados">
-                Se encontró que la pérdida de capital estaba concentrada en clientes con altos
-                saldos, generando un impacto financiero significativo. La inactividad surgió
-                como la principal señal de alerta, especialmente en Alemania, donde se registró
-                la mayor tasa de fuga.
+              <CardBlock label="Insight">
+                El crecimiento de WeWork estuvo acompañado de pérdidas significativas, mayores
+                obligaciones financieras y compromisos de largo plazo, evidenciando una brecha
+                entre el crecimiento del negocio y su capacidad para sostenerlo financieramente.
+                El análisis permitió identificar cómo los datos financieros podían revelar
+                riesgos estratégicos y de sostenibilidad del negocio.
               </CardBlock>
-              <img
-                src={churnDashboard}
-                alt="Dashboard de Power BI: Análisis de Fuga de Clientes y Pérdida de Capital"
-                loading="lazy"
-                className="mx-auto w-full max-w-3xl rounded-md bg-white object-contain"
-              />
+              <a
+                href={weworkDashboardOverview}
+                target="_blank"
+                rel="noreferrer"
+                className="group flex items-center justify-center overflow-hidden rounded-md"
+              >
+                <img
+                  src={weworkDashboardOverview}
+                  alt="Dashboard de indicadores clave de WeWork: valoración, pasivos vs. patrimonio, ingresos vs. pérdida neta y crecimiento operativo"
+                  loading="lazy"
+                  className="mx-auto w-full max-w-3xl rounded-md bg-white object-contain transition-transform duration-300 group-hover:scale-[1.02]"
+                />
+              </a>
+            </ProjectCard>
+
+            <ProjectCard
+              title="Automatización — Contratos Vehiculares"
+              tech={["n8n", "Gemini (IA)", "Process Automation"]}
+              actions={
+                <DocsLink href="/docs/vehicle-contract-automation-technical-documentation.pdf" />
+              }
+            >
+              <CardBlock label="Problema">
+                El equipo de facturación de un concesionario transcribía manualmente 8 campos de
+                información desde contratos en PDF a una hoja de cálculo. Era un proceso
+                repetitivo, lento y propenso a errores humanos.
+              </CardBlock>
+              <CardBlock label="Solución">
+                Un flujo en n8n que automatiza el proceso de principio a fin, toma los
+                contratos desde Google Drive, extrae su contenido y utiliza Gemini AI para
+                identificar los 8 campos requeridos. Luego, registra automáticamente la
+                información en Google Sheets y, al terminar de procesar todos los contratos,
+                envía un correo de confirmación por Gmail.
+              </CardBlock>
+              <CardBlock label="Resultado">
+                Se eliminó la carga manual de datos y se agilizó el procesamiento de contratos
+                por lotes, reduciendo errores y haciendo más confiable el proceso de
+                facturación.
+              </CardBlock>
+              <div className="flex flex-col gap-3">
+                <a
+                  href={n8nFlow}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="group block overflow-hidden rounded-md"
+                >
+                  <img
+                    src={n8nFlow}
+                    alt="Flujo de n8n para automatizar el procesamiento de contratos vehiculares"
+                    loading="lazy"
+                    className="aspect-video w-full bg-white object-contain transition-transform duration-300 group-hover:scale-[1.02]"
+                  />
+                </a>
+                <div className="grid gap-3 sm:grid-cols-2">
+                  <a
+                    href={sheetsResult}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="group block overflow-hidden rounded-md"
+                  >
+                    <img
+                      src={sheetsResult}
+                      alt="Datos vehiculares extraídos y registrados en Google Sheets"
+                      loading="lazy"
+                      className="aspect-video w-full bg-white object-contain transition-transform duration-300 group-hover:scale-[1.02]"
+                    />
+                  </a>
+                  <a
+                    href={n8nConfirmationMsg}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="group block overflow-hidden rounded-md"
+                  >
+                    <img
+                      src={n8nConfirmationMsg}
+                      alt="Mensaje de confirmación por Gmail tras el procesamiento exitoso"
+                      loading="lazy"
+                      className="aspect-video w-full bg-white object-contain transition-transform duration-300 group-hover:scale-[1.02]"
+                    />
+                  </a>
+                </div>
+              </div>
             </ProjectCard>
           </div>
         </section>
